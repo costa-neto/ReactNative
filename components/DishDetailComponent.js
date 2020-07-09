@@ -32,7 +32,10 @@ class DishDetail extends Component{
         };
     }
     static navigationOptions= {
-        title: 'Dish Details'
+        title: 'Dish Details',
+        headerStyle: {
+            backgroundColor: '#512DA8'
+          },
         
     };
     render(){
