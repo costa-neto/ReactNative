@@ -90,7 +90,7 @@ export const fetchPromos = () => (dispatch) => {
             throw errMess;
         })
         .then(response => response.json())
-        .then(dishes => dispatch(addPrmos(dishes)))
+        .then(dishes => dispatch(addPromos(dishes)))
         .catch(error => dispatch(promosFailed(error.message)))
 }
 
@@ -128,7 +128,7 @@ export const fetchLeaders = () => (dispatch) => {
             throw errMess;
         })
         .then(response => response.json())
-        .then(dishes => dispatch(addLeaders(leaders)))
+        .then(leaders => dispatch(addLeaders(leaders)))
         .catch(error => dispatch(leadersFailed(error.message)))
 }
 
@@ -144,6 +144,6 @@ export const leadersFailed = (errmess) => ({
 
 export const addLeaders = (leaders) => ({
     type: ActionTypes.ADD_LEADERS,
-    payload:comments
+    payload:leaders
 });
 

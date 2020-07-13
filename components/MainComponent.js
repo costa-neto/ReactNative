@@ -12,6 +12,24 @@ import {createAppContainer, SafeAreaView} from 'react-navigation'
 import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar';
 import { StatusBar } from 'expo-status-bar';
 import {Icon} from 'react-native-elements'
+import {connect} from 'react-redux';
+import {baseUrl} from '../shared/baseUrl'
+import {fetchDishes, fetchComments, fetchPromos, fetchLeaders} from '../redux/ActionCreators';
+
+
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+    fetchDishes: () => dispatch(fetchDishes()),
+    fetchComments: () => dispatch(fetchComments()),
+    fetchPromos: () => dispatch(fetchPromos()),
+    fetchLeaders: () => dispatch(fetchLeaders())
+});
+
 
 const MenuNavigator = createStackNavigator({
     Menu: {screen: Menu,
@@ -182,17 +200,23 @@ const MainNavigator = createDrawerNavigator({
 );
 
 
-const Main = createAppContainer(MainNavigator);
+const MainNav = createAppContainer(MainNavigator);
 
-// class Main extends Component {
-//     render(){
-//         return(
-//             <View style={{flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : 1}}>
-//                 <MainNavigator />
-//             </View>
-//         );
-//     }
-// }
+class Main extends Component {
+    componentDidMount(){
+        this.props.fetchDishes();
+        this.props.fetchComments();
+        this.props.fetchPromos();
+        this.props.fetchLeaders();
+    }
+    render(){
+        return(
+            <View style={{flex: 1}}>
+                <MainNav />
+            </View>
+        );
+    }
+}
 
 const styles=StyleSheet.create({
     container:{
@@ -220,4 +244,4 @@ const styles=StyleSheet.create({
         
 })
 
-export default Main;
+export default connect(mapStateToProps,mapDispatchToProps)(Main);
