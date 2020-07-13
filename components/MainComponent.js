@@ -31,6 +31,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
+//define as navegações em pilha de cada página
+
 const MenuNavigator = createStackNavigator({
     Menu: {screen: Menu,
             navigationOptions: ({navigation}) => ({
@@ -117,6 +119,8 @@ const AboutNavigator = createStackNavigator({
     }
 });
 
+//define um Component customizado para adicinar logo e titulo ao menu lateral
+
 const CustomDrawerContentComponent = (props) => (
     <ScrollView>
         <SafeAreaView style = {styles.container}
@@ -135,6 +139,8 @@ const CustomDrawerContentComponent = (props) => (
     </ScrollView>
 );
 
+
+//define o navegador principal, adicionando as páginas que são apresentadas no menu principal
 
 const MainNavigator = createDrawerNavigator({
     Home: {
@@ -199,7 +205,7 @@ const MainNavigator = createDrawerNavigator({
 }
 );
 
-
+//cria um container com o Navegador Principal
 const MainNav = createAppContainer(MainNavigator);
 
 class Main extends Component {
@@ -217,6 +223,9 @@ class Main extends Component {
         );
     }
 }
+
+
+//define uma palheta de estilos que são usados no component customizado
 
 const styles=StyleSheet.create({
     container:{

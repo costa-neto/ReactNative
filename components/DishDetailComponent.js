@@ -11,7 +11,7 @@ const mapStateToProps = state => {
     }
 }
 
-
+//função para renderizar o prato selecionado
 function RenderDish(props){
     const dish=props.dish;
 
@@ -40,7 +40,7 @@ function RenderDish(props){
     }
 }
 
-
+//função para renderizar os comentários referentes ao prato
 function RenderComments(props) {
     const comments = props.comments;
 

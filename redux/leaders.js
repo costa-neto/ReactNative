@@ -19,3 +19,6 @@ export const leaders = (state = {
                 return state;
         }   
     }
+
+
+    //implementa as ações definidas com Redux

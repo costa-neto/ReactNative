@@ -19,3 +19,6 @@ export const promotions = (state = {
                 return state;
         }   
     }
+
+
+    //implementa as ações definidas com Redux

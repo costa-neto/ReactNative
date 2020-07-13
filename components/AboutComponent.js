@@ -6,12 +6,16 @@ import {connect} from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
 
 
+
+//define para as props o state referente a leaders
 const mapStateToProps = state => {
     return {
         leaders: state.leaders
     }
 }
 
+
+//cria um component para apresentar a história do restaurante
 function History(props) {
     return(
         <Card title="Our History">

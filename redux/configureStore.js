@@ -18,3 +18,5 @@ export const ConfigureStore = () =>{
     );
     return store;
 }
+
+//configura o Store para ser usado pelo Redux

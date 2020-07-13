@@ -19,3 +19,5 @@ export const dishes = (state = {
                 return state;
         }   
     }
+
+    //implementa as ações definidas com Redux
