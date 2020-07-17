@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import { SafeAreaView,View, FlatList, Text} from 'react-native';
+import { ScrollView,View, FlatList, Text} from 'react-native';
 import {Card} from 'react-native-elements';
 import { ListItem } from 'react-native-elements';
 import {connect} from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
+import {Loading} from './LoadingComponent';
 
 
 
@@ -52,22 +53,51 @@ class About extends Component{
                 />
             );
         }
-        return(
-            <SafeAreaView style={{flex: 1}}>
+        if(this.props.isLoading) {
+            return(
+                <ScrollView style={{flex: 1}}>
                 
                 <History />
                 
                 <Card title="Corporate Leadership">
-                
-                <FlatList 
-                    data={this.props.leaders.leaders}
-                    keyExtractor={item => item.id.toString()} 
-                    renderItem={renderOurLeadership}
-                    />
-                
+                    <Loading />
                 </Card>
-            </SafeAreaView>
-        );
+
+                </ScrollView>
+            );
+        }
+        else if(this.props.leaders.errMess)
+        {
+            return(
+                <ScrollView style={{flex: 1}}>
+                
+                <History />
+                
+                <Card title="Corporate Leadership">
+                    <Text>{this.props.leaders.errMess}</Text>
+                </Card>
+
+                </ScrollView>
+            );
+        }
+        else{
+            return(
+                <ScrollView style={{flex: 1}}>
+                    
+                    <History />
+                    
+                    <Card title="Corporate Leadership">
+                    
+                    <FlatList 
+                        data={this.props.leaders.leaders}
+                        keyExtractor={item => item.id.toString()} 
+                        renderItem={renderOurLeadership}
+                        />
+                    
+                    </Card>
+                </ScrollView>
+            );
+        }
     }
 }
 
